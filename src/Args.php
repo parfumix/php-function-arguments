@@ -60,7 +60,7 @@ class Args implements Argumentable, ArrayAccess, Iterator, IteratorAggregate, Co
 			$isValid = true;
 
 		if( $closure )
-			$closure($validator->getMessageBag());
+			$closure($validator->failed());
 
 		return $isValid;
 	}
