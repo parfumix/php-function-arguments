@@ -2,15 +2,18 @@
 
 use Argument\Contracts\Argumentable;
 use ArrayAccess;
+use ArrayIterator;
+use Closure;
 use Countable;
+use Illuminate\Validation\Factory;
 use Iterator;
 use IteratorAggregate;
 
 class Args implements Argumentable, ArrayAccess, Iterator, IteratorAggregate, Countable {
 
-	protected $rules;
+	protected $rules = array();
 
-	protected $items;
+	protected $items = array();
 
 	public static function create($rules = null, $values = null) {
 		$values = (array)$values;
@@ -38,40 +41,37 @@ class Args implements Argumentable, ArrayAccess, Iterator, IteratorAggregate, Co
 		return $this->items[$key];
 	}
 
-	public function validate() {
-		return $this();
+	/**
+	 * Validate arguments ..
+	 *
+	 * @param null $key
+	 * @param callable $closure
+	 * @return bool
+	 * @internal param array $rules
+	 */
+	public function validate($key = null, Closure $closure = null) {
+		if(! $this->rules)
+			return true;
+
+		$validator = Factory::make($this->items, $this->rules);
+
+		$isValid = false;
+		if( $validator->passes() )
+			$isValid = true;
+
+		if( $closure )
+			$closure($validator->getMessageBag());
+
+		return $isValid;
 	}
 
-	public function __invoke() {
-		array_walk($this->rules, function ($rule) {
-			$validations = explode(',', $rule);
-
-			array_walk($validations, function ($validation) use ($rule) {
-				$func = sprintf('is', ucfirst($validation));
-				if (! method_exists($this, $func))
-					return false;
-
-				if (! $this->$func($this->$rule))
-					return false;
-			});
-		});
+	public function __invoke($key = null) {
+		return $this->valid($key);
 	}
 
 	public function __get($key) {
 		return $this->items[$key];
 	}
-
-
-	/**
-	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-	 * Validation functions                                               *
-	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-	 */
-
-	protected function isRequired($value) {
-		return isset($value) ? true : false;
-	}
-
 
 	/**
 	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
