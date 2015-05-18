@@ -15,6 +15,13 @@ class Args implements Argumentable, ArrayAccess, Iterator, IteratorAggregate, Co
 
 	protected $items = array();
 
+	/**
+	 * Create new args instance ..
+	 *
+	 * @param null $values
+	 * @param null $rules
+	 * @return Args
+	 */
 	public static function create($values = null, $rules = null) {
 		$values = (array)$values;
 		$rules = (array)$rules;
@@ -29,20 +36,37 @@ class Args implements Argumentable, ArrayAccess, Iterator, IteratorAggregate, Co
 		return $self;
 	}
 
+	/**
+	 * Set the rules .
+	 *
+	 * @param array $rules
+	 */
 	public function rules(array $rules = array()) {
 		$this->rules = $rules;
 	}
 
+	/**
+	 * Set key .
+	 *
+	 * @param $key
+	 * @param $value
+	 */
 	public function set($key, $value) {
 		$this->items[$key] = $value;
 	}
 
+	/**
+	 * Get key .
+	 *
+	 * @param $key
+	 * @return mixed
+	 */
 	public function get($key) {
 		return $this->items[$key];
 	}
 
 	/**
-	 * Validate arguments ..
+	 * Perform validation .
 	 *
 	 * @param null $key
 	 * @param callable $closure
@@ -65,6 +89,7 @@ class Args implements Argumentable, ArrayAccess, Iterator, IteratorAggregate, Co
 		return $isValid;
 	}
 
+	
 	public function __invoke($key = null) {
 		return $this->valid($key);
 	}
