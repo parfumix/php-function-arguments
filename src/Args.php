@@ -71,7 +71,6 @@ class Args implements Argumentable, ArrayAccess, Iterator, IteratorAggregate, Co
 	 * @param null $key
 	 * @param callable $closure
 	 * @return bool
-	 * @internal param array $rules
 	 */
 	public function validate($key = null, Closure $closure = null) {
 		if(! $this->rules)
