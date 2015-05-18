@@ -11,11 +11,11 @@ Argument helper is an class helper which can help wich help you to reduce the ar
 ### Instalation
 You can use the `composer` package manager to install. Either run:
 
-    $ php composer.phar require kartik-v/bootstrap-star-rating "dev-master"
+    $ php composer.phar require parfumix/php-function-arguments "dev-master"
 
 or add:
 
-    "kartik-v/bootstrap-star-rating": "dev-master"
+    "parfumix/php-function-arguments": "dev-master"
 
 to your composer.json file
 
