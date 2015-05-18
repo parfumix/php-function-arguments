@@ -11,6 +11,7 @@
     "php": ">=5.4.0",
   },
   "autoload": {
+    "files": ["helpers.php"],
     "psr-4": {
       "Argument\\": "src/"
     }
