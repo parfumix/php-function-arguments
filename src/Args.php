@@ -1,4 +1,10 @@
-<?php
+<?php namespace Argument;
+
+use Argument\Contracts\Argumentable;
+use ArrayAccess;
+use Countable;
+use Iterator;
+use IteratorAggregate;
 
 class Args implements Argumentable, ArrayAccess, Iterator, IteratorAggregate, Countable {
 

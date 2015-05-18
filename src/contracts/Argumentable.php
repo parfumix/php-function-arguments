@@ -1,4 +1,4 @@
-<?php
+<?php namespace Argument\Contracts;
 
 interface Argumentable {
 
