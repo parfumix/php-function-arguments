@@ -15,7 +15,7 @@ class Args implements Argumentable, ArrayAccess, Iterator, IteratorAggregate, Co
 
 	protected $items = array();
 
-	public static function create($rules = null, $values = null) {
+	public static function create($values = null, $rules = null) {
 		$values = (array)$values;
 		$rules = (array)$rules;
 

@@ -4,7 +4,7 @@
  * Create an instance of argument ..
  */
 if (!function_exists('args')) {
-	function args($rules = null, $values = null) {
-		return Argument\Args::create($rules, $values);
+	function args($values = null, $rules = null) {
+		return Argument\Args::create($values, $rules);
 	}
 }
