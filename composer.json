@@ -9,6 +9,7 @@
     ],
   "require": {
     "php": ">=5.4.0",
+    "illuminate/validation": "~5.1@dev"
   },
   "autoload": {
     "files": ["helpers.php"],
@@ -16,6 +17,5 @@
       "Argument\\": "src/"
     }
   },
-    "minimum-stability": "dev",
-    "require": {}
+    "minimum-stability": "dev"
 }
