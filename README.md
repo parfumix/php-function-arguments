@@ -1,19 +1,18 @@
 # php-function-arguments
 
-// Example of usage ..
+# Example of usage ..
 
+```php
 $arguments = args();
 $arguments->set('name', 'value1');
 $arguments->set('name', 'value1');
 
 // Perform validation ..
 $arguments();
+```
 
 
-// Get option
-$arguments->get('name');
-
-
+```php
 class Example {
 
 	public function render(Argumentable $args) {
@@ -22,3 +21,4 @@ class Example {
 		$args->name;
 	}
 }
+```
