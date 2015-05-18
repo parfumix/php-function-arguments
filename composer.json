@@ -9,7 +9,7 @@
     ],
   "require": {
     "php": ">=5.4.0",
-    "illuminate/validation": "~5.1@dev"
+    "illuminate/validation": "~5.0@dev"
   },
   "autoload": {
     "files": ["helpers.php"],
